@@ -1,0 +1,3 @@
+#set ($list =
+$u.ref("crud_search_user_info_service","default",["$!{id}","$!{first_name}","$!{last_name}","$!{mobile}","$!{email}","$!{record_per_page}","-1","$!{request.UserPrincipal.name}","$!{request.RemoteAddr}"],9)
+) {"NOP":"$!list[0]['NOP']'", "NOR":"$!list[0]['NOR']"}

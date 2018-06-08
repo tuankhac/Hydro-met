@@ -1,0 +1,5 @@
+ #set ($list =
+$u.ref("crud_search_log_all_service","default",["$!{entity}","$!{content}","$!{logdate}","$!{record_per_page}","-1","$!{request.UserPrincipal.name}","$!{request.RemoteAddr}"],7)
+) {"NOP":"$!list[0]['NOP']'", "NOR":"$!list[0]['NOR']"}
+
+

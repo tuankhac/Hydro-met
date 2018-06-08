@@ -1,0 +1,46 @@
+<table id="data-list-roles"
+	class='table table-condensed table-striped table-bordered'>
+	<tr>
+		<th>&nbsp;</th>
+		<th align=center>${n.i18n.role_id}</th>
+		<th align=center>${n.i18n.role_role_name}</th>
+		<th align=center>${n.i18n.role_description}</th>
+	</tr>
+	#set ($list =
+	$u.ref("crud_search_role_service","default",["$!{id}","$!{role_name}","$!{description}","$!{record_per_page}",
+	"$!{page_index}","$!{request.UserPrincipal.name}","$!{request.RemoteAddr}"],7))
+	#foreach ($i in $list)
+	<tr>
+		<td width='22px' align=center><input type="radio"
+			id="rad$i['ID']" name="role_rad"></td>
+		<td align=left name='id'>$!i["ID"]</td>
+		<td align=left name='role_name'>$!i["ROLE_NAME"]</td>
+		<td align=left name='description'>$!i["DESCRIPTION"]</td>
+	</tr>
+	#end
+</table>
+<script>
+	$(document).ready(function() {
+		var list_Input_Name_Role = $('input[type=radio][name=role_rad]');
+		var list_Input_Radio = $('input[type=radio]');
+		list_Input_Name_Role.click(function() {
+			list_Input_Radio.each(function() {
+				$(this).parent().parent().css("background", "#fff");
+				console.log("chay vao day 3");
+			});
+			console.log("chay vao day 1");
+			//$(this).parent().parent().css('background-color', '#dfdfdf');
+		}); 
+		
+		
+		$('#data-list-roles tr').click(function(){
+			$('input[type=radio][name=role_rad]').change();
+			$(this).find("input[type=radio][name=role_rad]").prop('checked', true);
+			list_Input_Radio.each(function() {
+				$(this).parent().parent().css("background", "#fff");
+			});
+			$(this).css('background-color', '#dfdfdf');
+			console.log("chay vao day 2")
+		});
+	});
+</script>

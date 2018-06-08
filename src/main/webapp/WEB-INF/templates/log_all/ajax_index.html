@@ -1,0 +1,28 @@
+<table width="100%"
+	class='table table-condensed table-striped table-bordered'>
+	<tr>
+		<th>&nbsp;</th>
+		<th align=center>${n.i18n.log_all_entity}</th>
+		<th align=center>${n.i18n.log_all_content}</th>
+		<th align=center>${n.i18n.log_all_logdate}</th>
+	</tr>
+	#set ($list =
+	$u.ref("crud_search_log_all_service","default",["$!{entity}","$!{content}","$!{logdate}","$!{record_per_page}","$!{page_index}","$!{request.UserPrincipal.name}","$!{request.RemoteAddr}"],7)
+	) #foreach ($i in $list)
+	<tr>
+		<td width='22px' align=center><input type="radio"
+			id="rad$i['ID']" name="log_all_rad"></td>
+		<td align=left name='entity' width="30%">$!i["ENTITY"].trim()</td>
+		<td align=left name='content' width="50%">$!i["CONTENT"].trim()</td>
+		<td align=center name='logdate' width="20%">$!i["LOGDATE"].trim()</td>
+	</tr>
+	#end
+</table>
+<script>
+	$(document).ready(function() {
+		$('input[type=radio][name=log_all_rad]').change(function(){	
+			$('input[type=radio]').each(function(){$(this).parent().parent().css("background","#fff");});
+			$(this).parent().parent().css('background-color','#dfdfdf');
+		});
+	});
+</script>

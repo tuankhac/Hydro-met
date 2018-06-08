@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+      <link href = "/assets/bootstrap/css/jquery-ui.min.css" rel = "stylesheet"/>
+      <script src="/assets/bootstrap/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+      <script src = "/assets/bootstrap/js/jquery-ui.min.js"></script>
+      <style>
+         .switch {
+         position: relative;
+         display: inline-block;
+         width: 80px;
+         height: 44px;
+         }
+         .switch input {display:none;}
+         .slider {
+         position: absolute;
+         cursor: pointer;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: #ccc;
+         -webkit-transition: .4s;
+         transition: .4s;
+         }
+         .slider:before {
+         position: absolute;
+         content: "";
+         height: 36px;
+         width: 36px;
+         left: 4px;
+         bottom: 4px;
+         background-color: white;
+         -webkit-transition: .4s;
+         transition: .4s;
+         }
+         input:checked + .slider {
+         background-color: #2196F3;
+         }
+         input:focus + .slider {
+         box-shadow: 0 0 1px #2196F3;
+         }
+         input:checked + .slider:before {
+         -webkit-transform: translateX(36px);
+         -ms-transform: translateX(36px);
+         transform: translateX(36px);
+         }
+         /* Rounded sliders */
+         .slider.round {
+         border-radius: 34px;
+         }
+         .slider.round:before {
+         border-radius: 50%;
+         }
+         .ui-dialog-osx {
+         -moz-border-radius: 0 0 8px 8px;
+         -webkit-border-radius: 0 0 8px 8px;
+         border-radius: 0 0 8px 8px;
+         border-width: 0 8px 8px 8px;
+         }
+      </style>
+   </head>
+   <body>
+      <h2>Toggle Switch</h2>
+      <label class="switch">
+      <input id= "myAnchor" type="checkbox" checked>
+      <span class="slider round"></span>
+      </label>
+	  </br></br></br>
+	  <div class="form-group">
+                <label class="">
+                  <div class="icheckbox_flat-green" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" class="flat-red" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                </label>
+                <label class="">
+                  <div class="icheckbox_flat-green" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" class="flat-red" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                </label>
+                <label>
+                  <div class="icheckbox_flat-green disabled" aria-checked="false" aria-disabled="true" style="position: relative;"><input type="checkbox" class="flat-red" disabled="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                  Flat green skin checkbox
+                </label>
+              </div>
+   </body>
+   <script>
+      $("#myAnchor").on('click',function(event){
+       event.preventDefault();
+       $('<div></div>').appendTo('body')
+       .html('<div><h1>Bạn muốn thực hiện?</h1></div>')
+       .dialog({
+         modal: true,
+         title: 'Message',
+         zIndex: 10002,
+         autoOpen: true,
+         width: '20%',
+         resizable: false,
+         
+         buttons: {
+           Yes: function () {
+             if($("#myAnchor").is(':checked')){
+				$.ajax({
+					url: 'deploy_app/stop.jsp',
+					success: function(data){ 
+					}
+				});
+               $("#myAnchor").prop( "checked", false );
+			   
+			 }
+			else{
+				$.ajax({
+					url: 'deploy_app/start.jsp',
+					success: function(data){ 
+					}
+				});
+				$("#myAnchor").prop( "checked", true );
+			}
+           $(this).dialog("close");
+       },
+       No: function () {
+        $(this).dialog("close");
+      }
+      },
+      close: function (event, ui) {
+      $(this).remove();
+      }
+      });
+      });
+   </script>
+</html>

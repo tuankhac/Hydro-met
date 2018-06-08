@@ -1,0 +1,137 @@
+<form id="roleForm">
+	<input type="hidden" name="crud_type"></input> <input type="hidden"
+		name="id"></input> <input type="hidden" name="role_name"></input> <input
+		type="hidden" name="description"></input>
+</form>
+<table id="role" class='table table-condensed'>
+	<tr>
+		<th colspan='4'><b>${n.i18n.crud_search_button_message.toUpperCase()}</b></th>
+	</tr>
+
+	<tr>
+		<td
+			title="${n.i18n.crud_valid_length_prefix} 50 ${n.i18n.crud_valid_length_postfix}"
+			id="id_label">${n.i18n.role_id}</td>
+		<td style="width: 40%;"><input type="text" class="form-control"
+			name="id" id="id"><span id="id_msg"></span></td>
+		<td
+			title="${n.i18n.crud_valid_length_prefix} 200 ${n.i18n.crud_valid_length_postfix}"
+			id="role_name_label">${n.i18n.role_role_name}</td>
+		<td style="width: 40%;"><input type="text" class="form-control"
+			name="role_name" id="role_name"><span id="role_name_msg"></span>
+		</td>
+	</tr>
+	<tr>
+		<td
+			title="${n.i18n.crud_valid_length_prefix} 200 ${n.i18n.crud_valid_length_postfix}"
+			id="description_label">${n.i18n.role_description}</td>
+		<td><input type="text" class="form-control" name="description"
+			id="description"><span id="description_msg"></span></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr id='control'>
+		<td colspan='4' align='center'><font id="result"></font>
+			<button name="doSearch" id="doSearch" class="btn btn-primary">
+				<i class="fa fa-search"></i> ${n.i18n.crud_search_button_message}
+			</button>&nbsp;
+			<button class="btn btn-primary" name="goNew" id="goNew">
+				<i class="fa fa-plus-square"></i> ${n.i18n.crud_new_button_message}
+				&gt;
+			</button>&nbsp;
+			<button class="btn btn-primary" name="goDelete" id="goDelete">
+				<i class="fa fa-trash"></i> ${n.i18n.crud_delete_button_message}
+				&gt;
+			</button>&nbsp;
+			<button class="btn btn-primary" name="goEdit" id="goEdit">
+				<i class="fa fa-edit"></i> ${n.i18n.crud_edit_button_message} &gt;
+			</button>&nbsp;</td>
+	</tr>
+</table>
+<!-- </form> -->
+<section class="content">
+	<div class="box box-primary">
+		<div class="box-body no-padding" id='data-list'
+			style="overflow: auto; margin: auto"></div>
+	</div>
+</section>
+<script type="text/javascript">
+	$(function() {
+		$('#doSearch').click(function() {
+			$('#result').html('${n.i18n.crud_process_message}');
+			var data = {
+				"record_per_page" : 500,
+				"page_index" : 1,
+				"id" : $('#id').val(),
+				"role_name" : $('#role_name').val(),
+				"description" : $('#description').val()
+			};
+			$.ajax({
+				url : 'crud_exec.jsp?crud_type=role/ajax_index.html',
+				data : data,
+				method : 'POST',
+				success : function(data) {
+					$('#data-list').html(data);
+					$('#result').html('');
+				}
+			});
+		});
+		$('#doSearch').click();
+		$('#goNew').click(function() {
+			window.location.href = 'crud.jsp?crud_type=role/new.html';
+		});
+		$('#goEdit').click(
+				function() {
+					var radioChecked = $(':radio:checked').parent().parent();
+					if (radioChecked.length >= 1) {
+						
+						var f = document.getElementById("roleForm");
+						f.setAttribute('method', "get");
+						f.setAttribute('action', "crud.jsp");
+						//f.setAttribute('crud_type',"role/edit.html");
+						//f.setAttribute('id',radioChecked.children("[name='id']").text());
+						//f.setAttribute('role_name',radioChecked.children("[name='role_name']").text());
+						//f.setAttribute('description',radioChecked.children("[name='description']").text());
+
+						f.crud_type.value = "role/edit.html";
+						f.id.value = radioChecked.children("[name='id']")
+								.text().trim();
+						f.role_name.value = radioChecked.children(
+								"[name='role_name']").text().trim();
+						f.description.value = radioChecked.children(
+								"[name='description']").text().trim();
+						//window.open('', 'Report');
+						f.submit();
+					} else {
+						alert('${n.i18n.crud_alert_select_one}');
+					}
+				});
+		$('#goDelete').click(
+				function() {
+					var radioChecked = $(':radio:checked').parent().parent();
+					if (radioChecked.length >= 1) {
+						
+						var f = document.getElementById("roleForm");
+						f.setAttribute('method', "get");
+						f.setAttribute('action', "crud.jsp");
+
+						f.crud_type.value = "role/delete.html";
+						f.id.value = radioChecked.children("[name='id']")
+								.text().trim();
+						f.role_name.value = radioChecked.children(
+								"[name='role_name']").text().trim();
+						f.description.value = radioChecked.children(
+								"[name='description']").text().trim();
+						//window.open('', 'Report');
+						f.submit();
+					} else {
+						alert('${n.i18n.crud_alert_select_one}');
+					}
+				});
+	});
+
+	$(document).ready(function() {
+
+	});
+</script>

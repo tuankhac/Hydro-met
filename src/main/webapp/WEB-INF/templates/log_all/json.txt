@@ -1,0 +1,4 @@
+crud_new_log_all_service=select new_log_all(?,?,?,?,?);
+crud_search_log_all_service={call search_log_all(?,?,?,?,?,?,?)};
+crud_edit_log_all_service=select edit_log_all(?,?,?,?,?);
+crud_delete_log_all_service=select del_log_all(?,?,?);

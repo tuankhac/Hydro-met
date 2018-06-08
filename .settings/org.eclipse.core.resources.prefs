@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/classes/vi_VN.properties=UTF-8
+encoding//src/main/webapp/WEB-INF/templates/menu/edit.html=UTF-8
+encoding//src/main/webapp/WEB-INF/templates/user_info/edit.html=UTF-8
+encoding//src/main/webapp/WEB-INF/templates/user_info/new.html=UTF-8
+encoding/<project>=UTF-8

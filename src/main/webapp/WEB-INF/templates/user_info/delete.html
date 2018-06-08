@@ -1,0 +1,116 @@
+<table id="user_info" class='table table-condensed'>
+	<tr>
+		<th colspan='4'><b>${n.i18n.crud_delete_button_message.toUpperCase()}</b></th>
+	</tr>
+	<tr>
+		<td
+			title="${n.i18n.crud_valid_length_prefix} 30 ${n.i18n.crud_valid_length_postfix}"
+			id="id_label">${n.i18n.user_info_id}<font color="red">&nbsp*</font></td>
+		<td style="width: 40%;"><input readonly type="text"
+			class="form-control" value='$!{id}' name="id" id="id"><span
+			id="id_msg"></span></td>
+		<!-- <td
+			title="${n.i18n.crud_valid_length_prefix} 50 ${n.i18n.crud_valid_length_postfix}"
+			id="password_label">${n.i18n.user_info_password}<font
+			color="red">&nbsp*</font></td>
+		<td style="width: 40%;"><input readonly type="password"
+			class="form-control" value='$!v["PASSWORD"]' name="password"
+			id="password"><span id="password_msg"></span></td> -->
+	</tr>
+	<tr>
+		<td
+			title="${n.i18n.crud_valid_length_prefix} 50 ${n.i18n.crud_valid_length_postfix}"
+			id="first_name_label">${n.i18n.user_info_first_name}</td>
+		<td><input readonly type="text" class="form-control"
+			value='$!{first_name}' name="first_name" id="first_name"><span
+			id="first_name_msg"></span></td>
+		<td
+			title="${n.i18n.crud_valid_length_prefix} 200 ${n.i18n.crud_valid_length_postfix}"
+			id="last_name_label">${n.i18n.user_info_last_name}</td>
+		<td><input readonly type="text" class="form-control"
+			value='$!{last_name}' name="last_name" id="last_name"><span
+			id="last_name_msg"></span></td>
+	</tr>
+	<tr>
+		<td
+			title="${n.i18n.crud_valid_length_prefix} 50 ${n.i18n.crud_valid_length_postfix}"
+			id="mobile_label">${n.i18n.user_info_mobile}</td>
+		<td><input readonly type="text" class="form-control"
+			value='$!{mobile}' name="mobile" id="mobile"><span
+			id="mobile_msg"></span></td>
+		<td
+			title="${n.i18n.crud_valid_length_prefix} 50 ${n.i18n.crud_valid_length_postfix}"
+			id="department_label">${n.i18n.user_info_department}</td>
+		<td><input readonly type="text" class="form-control" value=''
+			name="department" id="department"><span id="department_msg"></span></td>
+	</tr>
+	<tr>
+		<td
+			title="${n.i18n.crud_valid_length_prefix} 50 ${n.i18n.crud_valid_length_postfix}"
+			id="email_label">${n.i18n.user_info_email}<font color="red">&nbsp*</font></td>
+		<td><input readonly type="text" class="form-control"
+			value='$!{email}' name="email" id="email"><span
+			id="email_msg"></span></td>
+		<td
+			title="${n.i18n.crud_valid_length_prefix} 22 ${n.i18n.crud_valid_length_postfix}"
+			id="gender_label">${n.i18n.user_info_gender}</td>
+		<td><input readonly type="text" class="form-control"
+			value='$!{gender}' name="gender" id="gender"><span
+			id="gender_msg"></span></td>
+	</tr>
+	<tr>
+		<td title="" id="status_id_label">${n.i18n.user_info_status_id}</td>
+		<td><select class="form-control" disabled name="status_id"
+			id="status_id" style="cursor: auto">
+
+		</select> <span id="status_id_msg"></span></td>
+		<td
+			title="${n.i18n.crud_valid_length_prefix} 7 ${n.i18n.crud_valid_length_postfix}"
+			id="created_date_label">${n.i18n.user_info_created_date}</td>
+		<td><input readonly type="text" class="form-control"
+			value='$!{created_date}' name="created_date" id="created_date"><span
+			id="created_date_msg"></span></td>
+	</tr>
+	<tr>
+		<td
+			title="${n.i18n.crud_valid_length_prefix} 7 ${n.i18n.crud_valid_length_postfix}"
+			id="modified_date_label">${n.i18n.user_info_modified_date}</td>
+		<td><input readonly type="text" class="form-control"
+			value='$!{modified_date}' name="modified_date" id="modified_date"><span
+			id="modified_date_msg"></span></td>
+	</tr>
+	<tr id='control'>
+		<td colspan='4' align='center'><font id="result"></font>
+			<button class="btn btn-primary" name="doDel" id="doDel">
+				<i class="fa fa-trash"></i> ${n.i18n.crud_delete_button_message}
+			</button>&nbsp;
+			<button class="btn btn-primary" name="goSearch" id="goSearch">
+				<i class="fa fa-search"></i> ${n.i18n.crud_search_button_message}
+				&gt;
+			</button>&nbsp;</td>
+	</tr>
+</table>
+<script type="text/javascript">
+   $(function(){
+   	$('#doDel').click(function(){
+   		if( !confirm('${n.i18n.crud_confirm_message}') ){return;}
+   		$('#result').html('${n.i18n.crud_process_message}');
+   		$.ajax({
+   			url: 'crud_exec.jsp?crud_type=user_info/delete_exec.html&id=${id}',
+   			success: function(data){ 
+   				if (data=="1.0"){
+   					$('#result').html("${n.i18n.crud_delete_message}"); 
+   				}else{
+   					$('#result').html(data);
+   				}
+   			}
+   		});
+   	});
+   	$('#goSearch').click(function(){
+   		window.location.href='crud.jsp?crud_type=user_info/index.html';
+   	});
+   });
+   $(document).ready(function(){
+
+   });
+</script>

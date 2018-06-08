@@ -1,0 +1,193 @@
+.css_pages_bg {
+	color: #000000;
+	margin: 0px;
+	padding: 0px;
+	background: url(sky_blue_grid.gif) left top repeat-x;
+	border-collapse: collapse;
+	border: #a4bed4 1px solid;
+	height: 26px;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	padding-left: 2px;
+	padding-right: 5px;
+}
+
+.css_pages_bg .page_table {
+	margin: 0px;
+	border: 0px;
+	border-collapse: collapse;
+}
+
+.css_pages_bg .page_first {
+	margin: 0px;
+	background: url(ar_left_abs.gif) left center no-repeat;
+	color: #000000;
+	padding-left: 19px;
+	padding-right: 1px;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.css_pages_bg .first_hd {
+	margin: 0px;
+	background: url(ar_left_abs_dis.gif) left center no-repeat;
+	color: #A3A3A3;
+	padding-left: 19px;
+	padding-right: 1px;
+	vertical-align: middle;
+}
+
+.css_pages_bg .page_last {
+	margin: 0px;
+	background: url(ar_right_abs.gif) right center no-repeat;
+	color: #000000;
+	padding-left: 1px;
+	padding-right: 19px;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.css_pages_bg .last_hd {
+	margin: 0px;
+	background: url(ar_right_abs_dis.gif) right center no-repeat;
+	color: #A3A3A3;
+	padding-left: 1px;
+	padding-right: 19px;
+	vertical-align: middle;
+}
+
+.css_pages_bg a:link, .css_pages_bg a:visited {
+	color: #000000;
+	border: 1px #a4bed4 solid;
+	font-size: 12px;
+	cursor: pointer;
+	margin: 0px;
+	padding-left: 5px;
+	padding-right: 5px;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+.css_pages_bg a:hover {
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+.css_pages_bg .page_current {
+	color: #FF3300;
+	background: #FFFFFF;
+	border-collapse: collapse;
+	border: 1px #666666 solid;
+	font-weight: bold;
+	font-size: 12px;
+	margin: 0px;
+	padding-left: 5px;
+	padding-right: 5px;
+	vertical-align: middle;
+}
+
+.css_pages_bg .text_box {
+	margin: 0px;
+	padding: 0px;
+	height: 16px;
+	color: #FF6600;
+	border: #666666 1px solid;
+	border-collapse: collapse;
+	text-align: center;
+	width: 60px;
+	vertical-align: middle;
+}
+
+.css_pages_bg .select_box {
+	margin: 0px;
+	padding: 0px;
+	color: #0066FF;
+	height: 18px;
+	border: 1px #666666 solid;
+	border-collapse: collapse;
+	width: 45px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.css_pages_bg .css_line_y {
+	background: url(bg_line_1.png) center top repeat-y;
+	width: 4px;
+	padding-left: 2px;
+	padding-right: 2px;
+	cursor: w-resize;
+}
+
+.css_pages_bg .txt_title {
+	color: #666666;
+	font-size: 12px;
+	vertical-align: middle;
+}
+
+.css_pages_bg .txt_number {
+	color: #0033FF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 1px;
+	vertical-align: middle;
+}
+
+.css_pages_only_number {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	padding-bottom: 2px;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 2px;
+}
+
+.css_pages_only_number .next_right {
+	background: url(arow_right.png) right center no-repeat;
+	margin: 0px;
+	vertical-align: middle;
+	padding-right: 5px;
+	padding-top: 2px;
+	padding-left: 3px;
+	cursor: pointer;
+	vertical-align: middle;
+	font-size: 18px;
+}
+
+.css_pages_only_number .next_left {
+	background: url(arow_left.png) left center no-repeat;
+	margin: 0px;
+	vertical-align: middle;
+	padding-right: 3px;
+	padding-top: 2px;
+	padding-left: 5px;
+	cursor: pointer;
+	vertical-align: middle;
+	font-size: 18px;
+}
+
+.css_pages_only_number a:link, .css_pages_only_number a:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #045a9f;
+	font-weight: bold;
+	text-decoration: none;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.css_pages_only_number a:hover {
+	color: #FF9900;
+	text-decoration: underline;
+}
+
+.css_pages_only_number .page_current {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FF9900;
+	font-weight: bold;
+	padding-left: 2px;
+	padding-right: 2px;
+	text-decoration: underline;
+}
